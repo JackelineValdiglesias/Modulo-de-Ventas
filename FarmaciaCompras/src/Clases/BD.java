@@ -100,7 +100,7 @@ public class BD {
 	public static Compra getCompra(int id) {
 		try {
 			Connection c = connectDB(); Statement st = c.createStatement();
-			ResultSet rs = st.executeQuery("select * from Compras where id="+id);
+			ResultSet rs = st.executeQuery("select c.*,SUM(ci.importe) as total from Compras c join ComprasItems ci ON ci.idCompra = c.id where c.id="+id);
 			rs.next();
 			Compra v = new Compra(
 							rs.getInt(1),
@@ -112,7 +112,7 @@ public class BD {
 							rs.getString(7),
 							rs.getString(8),
 							rs.getString(9),
-							rs.getDouble(10),
+							rs.getDouble(13),
 							rs.getInt(11),
 							rs.getInt(12));
 			closeBD(c, st, rs);

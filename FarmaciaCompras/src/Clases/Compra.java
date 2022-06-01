@@ -6,6 +6,8 @@ import Views.EditarCompra;
 import Views.*;
 
 public class Compra {
+	public boolean valido;
+	public String errores;
 	public Integer id;
 	public String fechaEmision;
 	public String fechaEntregaEstimada;
@@ -23,16 +25,22 @@ public class Compra {
 	public Compra(int id, String fechaEmision, String fechaEntregaEstimada, String fechaEntrega, String nombre,
 			String DNI, String nomproveedor,String rucProv, String numFactura, double totalImporte, int estado, int moneda) {
 		super();
+		errores="";
+		valido=true;
 		this.id = id;
 		this.fechaEmision = fechaEmision;
 		this.fechaEntregaEstimada = fechaEntregaEstimada;
 		this.fechaEntrega = fechaEntrega;
 		this.nombre = nombre;
 		this.DNI=DNI;
+		if (DNI.length()!=8) {errores+="DNI:Debe tener longitud 8 \n";valido=false;}
 		this.nomproveedor = nomproveedor;
 		this.rucProv = rucProv;
+		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}
 		this.numFactura = numFactura;
+		if (numFactura.length()<6) {errores+="Factura:Debe tener por lo menos longitud de 6 \n";valido=false;}
 		this.totalImporte = totalImporte;
+		
 		this.estado = estado;
 		this.moneda = moneda;
 		
@@ -78,7 +86,11 @@ public class Compra {
 		this.id = getIntInput(c.txtid.getText());
 		this.estado = c.cbestado.getSelectedIndex();
 		this.moneda = c.cbmoneda.getSelectedIndex();
-		
+		errores="";
+		valido=true;		
+		if (DNI.length()!=8) {errores+="DNI:Debe tener longitud 8 \n";valido=false;}
+		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}
+		if (numFactura.length()<6) {errores+="Factura:Debe tener por lo menos longitud de 6 \n";valido=false;}
 	}
 	
 	public Compra() {

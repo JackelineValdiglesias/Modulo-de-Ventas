@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Error extends JDialog {
 
@@ -55,10 +57,12 @@ public class Error extends JDialog {
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
-			JLabel lblmsg = new JLabel(msg);
-			lblmsg.setHorizontalAlignment(SwingConstants.CENTER);
-			lblmsg.setBounds(60, 167, 400, 14);
-			contentPanel.add(lblmsg);
+			JTextArea textArea = new JTextArea(msg);
+			textArea.setRows(5);
+			textArea.setBounds(24, 154, 384, 63);
+			contentPanel.add(textArea);
+			System.out.println("mensaje:"+msg);
+			
 		}
 		{
 			JPanel buttonPane = new JPanel();

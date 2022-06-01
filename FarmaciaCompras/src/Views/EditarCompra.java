@@ -26,6 +26,8 @@ import Clases.CompraItem;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 
@@ -89,7 +91,7 @@ public class EditarCompra extends JFrame {
 		panel_1.setBounds(229, 65, 121, 56);
 		contentPane.add(panel_1);
 		
-		txtdnitrabaj = new JTextField();
+		txtdnitrabaj = new JTextField();	
 		txtdnitrabaj.setColumns(10);
 		txtdnitrabaj.setBounds(10, 22, 101, 20);
 		panel_1.add(txtdnitrabaj);

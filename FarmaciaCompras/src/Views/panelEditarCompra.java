@@ -24,6 +24,8 @@ import Clases.BD;
 import Clases.Compra;
 import Clases.CompraItem;
 import Clases.Response;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class panelEditarCompra extends JPanel {
 
@@ -66,6 +68,18 @@ public class panelEditarCompra extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		txttrabajador = new JTextField();
+		txttrabajador.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'a' || c>'z') {		
+		        	if ( c<'A' || c>'Z') {
+		        	 e.consume();
+		        	}
+		        }
+			}
+		});
 		txttrabajador.setBounds(10, 26, 192, 20);
 		panel.add(txttrabajador);
 		txttrabajador.setColumns(10);
@@ -77,6 +91,16 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_1);
 		
 		txtdnitrabaj = new JTextField();
+		txtdnitrabaj.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtdnitrabaj.setColumns(10);
 		txtdnitrabaj.setBounds(10, 22, 101, 20);
 		panel_1.add(txtdnitrabaj);
@@ -88,6 +112,18 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2);
 		
 		txtproveedor = new JTextField();
+		txtproveedor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'a' || c>'z') {		
+		        	if ( c<'A' || c>'Z') {
+		        	 e.consume();
+		        	}
+		        }
+			}
+		});
 		txtproveedor.setColumns(10);
 		txtproveedor.setBounds(10, 22, 200, 20);
 		panel_2.add(txtproveedor);
@@ -99,6 +135,16 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2_1);
 		
 		txtruc = new JTextField();
+		txtruc.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtruc.setColumns(10);
 		txtruc.setBounds(10, 22, 107, 20);
 		panel_2_1.add(txtruc);
@@ -110,6 +156,16 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2_1_1);
 		
 		txtfactura = new JTextField();
+		txtfactura.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtfactura.setColumns(10);
 		txtfactura.setBounds(10, 25, 180, 20);
 		panel_2_1_1.add(txtfactura);
@@ -129,16 +185,46 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2_1_1_1);
 		
 		txtdiaemi = new JTextField();
+		txtdiaemi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtdiaemi.setBounds(10, 25, 51, 20);
 		panel_2_1_1_1.add(txtdiaemi);
 		txtdiaemi.setColumns(10);
 		
 		txtmesemi = new JTextField();
+		txtmesemi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtmesemi.setColumns(10);
 		txtmesemi.setBounds(71, 25, 53, 20);
 		panel_2_1_1_1.add(txtmesemi);
 		
 		txtañoemi = new JTextField();
+		txtañoemi.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtañoemi.setColumns(10);
 		txtañoemi.setBounds(134, 25, 73, 20);
 		panel_2_1_1_1.add(txtañoemi);
@@ -162,6 +248,17 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_1_1);
 		
 		txtimporte = new JTextField();
+		txtimporte.setEditable(false);
+		txtimporte.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtimporte.setColumns(10);
 		txtimporte.setBounds(10, 25, 107, 20);
 		panel_1_1.add(txtimporte);
@@ -204,16 +301,46 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2_1_1_1_1);
 		
 		txtdiaesti = new JTextField();
+		txtdiaesti.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtdiaesti.setColumns(10);
 		txtdiaesti.setBounds(10, 25, 51, 20);
 		panel_2_1_1_1_1.add(txtdiaesti);
 		
 		txtmesesti = new JTextField();
+		txtmesesti.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtmesesti.setColumns(10);
 		txtmesesti.setBounds(71, 25, 53, 20);
 		panel_2_1_1_1_1.add(txtmesesti);
 		
 		txtañoesti = new JTextField();
+		txtañoesti.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtañoesti.setColumns(10);
 		txtañoesti.setBounds(134, 25, 73, 20);
 		panel_2_1_1_1_1.add(txtañoesti);
@@ -237,16 +364,46 @@ public class panelEditarCompra extends JPanel {
 		this.add(panel_2_1_1_1_2);
 		
 		txtdiaentre = new JTextField();
+		txtdiaentre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtdiaentre.setColumns(10);
 		txtdiaentre.setBounds(10, 25, 51, 20);
 		panel_2_1_1_1_2.add(txtdiaentre);
 		
 		txtmesentre = new JTextField();
+		txtmesentre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtmesentre.setColumns(10);
 		txtmesentre.setBounds(71, 25, 53, 20);
 		panel_2_1_1_1_2.add(txtmesentre);
 		
 		txtañoentre = new JTextField();
+		txtañoentre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		txtañoentre.setColumns(10);
 		txtañoentre.setBounds(134, 25, 73, 20);
 		panel_2_1_1_1_2.add(txtañoentre);
@@ -274,6 +431,7 @@ public class panelEditarCompra extends JPanel {
 		panel_4.add(scrollPane);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -403,6 +561,11 @@ public class panelEditarCompra extends JPanel {
 	public void guardar() {
 		System.out.println("Testing");
 		Compra c = new Compra(this);
+		if(!c.valido) {
+			Error er = new Error(c.errores);
+			er.setVisible(true);
+			return;
+		}
 		System.out.println(c);
 		
 		try {
