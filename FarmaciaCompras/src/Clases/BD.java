@@ -98,9 +98,10 @@ public class BD {
 	}
 	
 	public static Compra getCompra(int id) {
+		System.out.println("ID:::"+id);
 		try {
 			Connection c = connectDB(); Statement st = c.createStatement();
-			ResultSet rs = st.executeQuery("select c.*,SUM(ci.importe) as total from Compras c join ComprasItems ci ON ci.idCompra = c.id where c.id="+id);
+			ResultSet rs = st.executeQuery("select c.*,SUM(ci.importe) as total from Compras c left join ComprasItems ci ON ci.idCompra = c.id where c.id="+id);
 			rs.next();
 			Compra v = new Compra(
 							rs.getInt(1),
@@ -115,6 +116,7 @@ public class BD {
 							rs.getDouble(13),
 							rs.getInt(11),
 							rs.getInt(12));
+			System.out.println("COmpra::"+v);
 			closeBD(c, st, rs);
 			return v;
 		} catch (Exception e) {

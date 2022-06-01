@@ -39,8 +39,7 @@ public class Compra {
 		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}
 		this.numFactura = numFactura;
 		if (numFactura.length()<6) {errores+="Factura:Debe tener por lo menos longitud de 6 \n";valido=false;}
-		this.totalImporte = totalImporte;
-		
+		this.totalImporte = Math.round(totalImporte);		
 		this.estado = estado;
 		this.moneda = moneda;
 		
@@ -70,9 +69,9 @@ public class Compra {
 	public Compra(panelEditarCompra c) {
 		super();
 		
-		String fechaemision=(c.txtdiaemi.getText()+(c.txtmesemi.getText()==""?"":"-")+c.txtmesemi.getText()+(c.txtañoemi.getText()==""?"":"-")+c.txtañoemi.getText());
-		String fechaestimada=(c.txtdiaesti.getText()+(c.txtmesesti.getText()==""?"":"-")+c.txtmesesti.getText()+(c.txtañoesti.getText()==""?"":"-")+c.txtañoesti.getText());
-		String fechaentrega=(c.txtdiaentre.getText()+(c.txtmesentre.getText()==""?"":"-")+c.txtmesentre.getText()+(c.txtañoentre.getText()==""?"":"-")+c.txtañoentre.getText());
+		String fechaemision=(c.txtañoemi.getText()+(c.txtmesemi.getText()==""?"":"-")+c.txtmesemi.getText()+(c.txtañoemi.getText()==""?"":"-")+c.txtdiaemi.getText());
+		String fechaestimada=(c.txtañoesti.getText()+(c.txtmesesti.getText()==""?"":"-")+c.txtmesesti.getText()+(c.txtañoesti.getText()==""?"":"-")+c.txtdiaesti.getText());
+		String fechaentrega=(c.txtañoentre.getText()+(c.txtmesentre.getText()==""?"":"-")+c.txtmesentre.getText()+(c.txtañoentre.getText()==""?"":"-")+c.txtdiaentre.getText());
 		
 		this.fechaEmision = fechaemision;
 		this.fechaEntregaEstimada = fechaestimada;
@@ -91,6 +90,16 @@ public class Compra {
 		if (DNI.length()!=8) {errores+="DNI:Debe tener longitud 8 \n";valido=false;}
 		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}
 		if (numFactura.length()<6) {errores+="Factura:Debe tener por lo menos longitud de 6 \n";valido=false;}
+		if (Compra.getIntInput(c.txtdiaemi.getText())>31||Compra.getIntInput(c.txtdiaemi.getText())<1 ) {errores+="Dia:No debe ser mayor a 31 \n";valido=false;}
+		if (Compra.getIntInput(c.txtdiaesti.getText())>31 || Compra.getIntInput(c.txtdiaesti.getText())<1) {errores+="Dia:No debe ser mayor a 31 \n";valido=false;}
+		if (Compra.getIntInput(c.txtdiaentre.getText())>31 || Compra.getIntInput(c.txtdiaentre.getText())<1) {errores+="Dia:No debe ser mayor a 31 \n";valido=false;}
+		if (c.txtañoemi.getText().length()!=4) {errores+="Año:Debe tener longitud 4 \n";valido=false;}
+		if (c.txtañoesti.getText().length()!=4) {errores+="Año:Debe tener longitud 4 \n";valido=false;}
+		if (c.txtañoentre.getText().length()!=4) {errores+="Año:Debe tener longitud 4 \n";valido=false;}	
+		if (Compra.getIntInput(c.txtmesemi.getText())>12 || Compra.getIntInput(c.txtmesemi.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
+		if (Compra.getIntInput(c.txtmesesti.getText())>12 || Compra.getIntInput(c.txtmesesti.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
+		if (Compra.getIntInput(c.txtmesentre.getText())>12 || Compra.getIntInput(c.txtmesentre.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
+		System.out.println("COmpraass:"+this);
 	}
 	
 	public Compra() {
@@ -106,10 +115,18 @@ public class Compra {
 	}
 
 	public static Integer getIntInput(String j) {
-		return (j == null || j.equals("")?0:Integer.parseInt(j));
+		try {
+			return (j == null || j==""?0:Integer.parseInt(j));
+		} catch (Exception e) {
+			return 0;
+		}		
 	}
 	public static Double getDouInput(String j) {
-		return (j == null || j.equals("")?0.0:Double.parseDouble(j));
+		try {
+			return (j == null || j==""?0.0:Double.parseDouble(j));
+		} catch (Exception e) {
+			return 0.0;
+		}		
 	}
 		
 }

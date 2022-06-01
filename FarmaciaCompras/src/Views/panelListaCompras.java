@@ -136,6 +136,7 @@ public class panelListaCompras extends JPanel {
 		if(row==-1 || table.getSelectedColumnCount() > 1) return;
 						
 		Compra c = BD.getCompra(BD.intVal(m, row, 0));
+		System.out.println("C:::"+c);
 		this.parent.frame.setContentPane(new panelEditarCompra(this.parent, c));
 		this.parent.frame.revalidate();
 	}

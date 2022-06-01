@@ -19,6 +19,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ItemsCompra extends JDialog {
 
@@ -82,6 +84,17 @@ public class ItemsCompra extends JDialog {
 		textid.setColumns(10);
 		
 		textpu = new JTextField();
+		textpu.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+				if(c=='.') return;
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		textpu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -101,6 +114,17 @@ public class ItemsCompra extends JDialog {
 		textitem.setColumns(10);
 		
 		textcant = new JTextField();
+		textcant.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+				System.out.println("E:"+e);
+				if(c=='-') return;
+		        if (c<'0' || c>'9') {		        	 
+		        	 e.consume();
+		        }
+			}
+		});
 		textcant.setBounds(276, 116, 96, 20);
 		contentPanel.add(textcant);
 		textcant.setColumns(10);

@@ -431,7 +431,6 @@ public class panelEditarCompra extends JPanel {
 		panel_4.add(scrollPane);
 		
 		table = new JTable();
-		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -444,7 +443,14 @@ public class panelEditarCompra extends JPanel {
 			new String[] {
 				"Id", "Nombre", "Precio", "Cantidad", "Importe"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		scrollPane.setViewportView(table);
 		//BD.listCompraItem(table, Integer.parseInt(txtid.getText()));//*
 		
