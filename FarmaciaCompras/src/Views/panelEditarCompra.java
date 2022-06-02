@@ -587,7 +587,7 @@ public class panelEditarCompra extends JPanel {
 				this.parent.frame.revalidate();
 			}
 			else {
-				Error er = new Error(r.msg);
+				Error er = new Error("El posible que la factura este duplicada o algún error similar");
 				er.setVisible(true);
 			}
 			

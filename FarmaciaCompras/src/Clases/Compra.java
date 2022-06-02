@@ -36,10 +36,10 @@ public class Compra {
 		if (DNI.length()!=8) {errores+="DNI:Debe tener longitud 8 \n";valido=false;}
 		this.nomproveedor = nomproveedor;
 		this.rucProv = rucProv;
-		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}
+		if (rucProv.length()!=11) {errores+="RUC:Debe tener longitud 11 \n";valido=false;}		
 		this.numFactura = numFactura;
 		if (numFactura.length()<6) {errores+="Factura:Debe tener por lo menos longitud de 6 \n";valido=false;}
-		this.totalImporte = Math.round(totalImporte);		
+		this.totalImporte = Math.round(totalImporte*10)/10D;		
 		this.estado = estado;
 		this.moneda = moneda;
 		
@@ -99,6 +99,12 @@ public class Compra {
 		if (Compra.getIntInput(c.txtmesemi.getText())>12 || Compra.getIntInput(c.txtmesemi.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
 		if (Compra.getIntInput(c.txtmesesti.getText())>12 || Compra.getIntInput(c.txtmesesti.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
 		if (Compra.getIntInput(c.txtmesentre.getText())>12 || Compra.getIntInput(c.txtmesentre.getText())<1) {errores+="Mes:No debe ser mayor a 12 \n";valido=false;}
+		Fecha emi=new Fecha(c.txtañoemi.getText(),c.txtmesemi.getText(),c.txtdiaemi.getText());
+		Fecha esti=new Fecha(c.txtañoesti.getText(),c.txtmesesti.getText(),c.txtdiaesti.getText());
+		Fecha entre=new Fecha(c.txtañoentre.getText(),c.txtmesentre.getText(),c.txtdiaentre.getText());
+		if (esti.compareTo(emi)) {errores+="La fecha de emisión tiene que ser menor que la fecha estimada \n";valido=false;}
+		if (entre.compareTo(emi)) {errores+="La fecha de emisión tiene que ser menor que la fecha de entrega \n";valido=false;}
+		if (entre.compareTo(esti)) {errores+="La fecha de estimación tiene que ser menor que la fecha de entrega \n";valido=false;}
 		System.out.println("COmpraass:"+this);
 	}
 	

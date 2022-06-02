@@ -89,7 +89,7 @@ public class ItemsCompra extends JDialog {
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
 				System.out.println("E:"+e);
-				if(c=='.') return;
+				if(c=='.' || c=='-') return;
 		        if (c<'0' || c>'9') {		        	 
 		        	 e.consume();
 		        }
@@ -189,13 +189,20 @@ public class ItemsCompra extends JDialog {
 	}
 	
 	public void guardar() {	
+		CompraItem c = new CompraItem(this);
+		System.out.println("Item por guardar:"+c);
+		if(!c.valido) {
+			Error er = new Error(c.errores);
+			er.setVisible(true);
+			return;
+		}
 		try {
-			Response r;
-			CompraItem c = new CompraItem(this);
+			Response r;			
+			
 			if (c.id!=0)
-				r = BD.editCompraItem(c);//Falta
+				r = BD.editCompraItem(c);//
 			else
-				r = BD.newCompraItem(c);//Falta
+				r = BD.newCompraItem(c);//
 			if(r.status == 1) {
 				Compra cf = BD.getCompra(this.idCompra);
 				this.parent.reload();
@@ -204,6 +211,7 @@ public class ItemsCompra extends JDialog {
 				ex.setVisible(true);
 			}
 			else {
+				System.out.println("Aqui esta el error");
 				Error er = new Error(r.msg);
 				er.setVisible(true);
 			}
